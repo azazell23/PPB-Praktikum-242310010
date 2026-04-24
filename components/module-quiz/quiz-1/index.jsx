@@ -1,0 +1,94 @@
+import { useState } from "react";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import UserCollections from "./components/UserCollections";
+import { UserList } from "./constants/userlist";
+
+export default function index() {
+  const totalUsers = UserList.length;
+
+  const [clickedState, setClickedState] = useState(false);
+
+  const handleButtonPress = () => {
+    setClickedState(true);
+  };
+
+  if (clickedState) {
+    const { img, nama, title, department, email } = UserList[0]; // selected user
+    return (
+      <SafeAreaView style={styles.staticPageContainer}>
+        <View style={{ justifyContent: "center", alignItems: "center" }}>
+          <Image style={styles.image} source={img} />
+          <Text>{nama}</Text>
+          <Text>{title}</Text>
+          <Text>{department}</Text>
+          <Text>{email}</Text>
+        </View>
+        <TouchableOpacity
+          onPress={() => {
+            setClickedState(false);
+          }}
+          style={styles.button}
+        >
+          <Text style={{ fontWeight: "bold" }}>Back</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+    );
+  }
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.fontHeader}>List User</Text>
+        <Text>Total User: {totalUsers}</Text>
+      </View>
+      <ScrollView>
+        <UserCollections onPress={handleButtonPress} />
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginHorizontal: 15,
+  },
+  header: {
+    justifyContent: "space-between",
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 10,
+  },
+  fontHeader: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  image: {
+    width: 120,
+    height: 120,
+    borderRadius: 10,
+  },
+  staticPageContainer: {
+    flex: 1,
+    justifyContent: "space-between",
+    flexDirection: "column",
+  },
+  button: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    marginTop: 10,
+    padding: 10,
+    borderRadius: 10,
+    marginHorizontal: 20,
+    marginVertical: 10,
+  },
+});
