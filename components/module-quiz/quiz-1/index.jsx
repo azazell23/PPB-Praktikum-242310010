@@ -24,13 +24,56 @@ export default function index() {
     const { img, nama, title, department, email } = UserList[0]; // selected user
     return (
       <SafeAreaView style={styles.staticPageContainer}>
-        <View style={{ justifyContent: "center", alignItems: "center" }}>
-          <Image style={styles.image} source={img} />
-          <Text>{nama}</Text>
-          <Text>{title}</Text>
-          <Text>{department}</Text>
-          <Text>{email}</Text>
+        <View style={{ marginHorizontal: 20 }}>
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              paddingBottom: 20,
+            }}
+          >
+            <Image style={styles.image} source={img} />
+            <Text style={{ fontSize: 30, fontWeight: "bold" }}>{nama}</Text>
+            <Text>{title}</Text>
+            <Text>{department}</Text>
+            <Text>{email}</Text>
+          </View>
+          <View>
+            <Text
+              style={{ fontSize: 24, fontWeight: "bold", marginBottom: 20 }}
+            >
+              Portofolio List
+            </Text>
+            <View
+              style={{
+                flexDirection: "row",
+                flexWrap: "wrap",
+                justifyContent: "space-around",
+              }}
+            >
+              <View style={styles.portofolioCard}>
+                <Image
+                  source={require("./img/x_logo.jpg")}
+                  style={styles.image}
+                />
+                <Text style={styles.portofolioTitle}>Twitter Duplicate</Text>
+                <Text>Code: AA-001</Text>
+              </View>
+              <View style={styles.portofolioCard}>
+                <Image
+                  source={require("./img/youtube_logo.png")}
+                  style={styles.image}
+                />
+                <Text style={styles.portofolioTitle}>
+                  Social Media Prototype
+                </Text>
+                <Text>Code: AA-002</Text>
+              </View>
+            </View>
+          </View>
         </View>
+
+        <View></View>
         <TouchableOpacity
           onPress={() => {
             setClickedState(false);
@@ -90,5 +133,19 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginHorizontal: 20,
     marginVertical: 10,
+  },
+  portofolioTitle: {
+    fontWeight: "bold",
+    fontSize: 18,
+    textAlign: "center",
+  },
+  portofolioCard: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    padding: 10,
+    maxWidth: "44%",
+    borderRadius: 15,
+    boxShadow: "5px 5px 2px 0px rgba(0,0,0,0.5)",
   },
 });
