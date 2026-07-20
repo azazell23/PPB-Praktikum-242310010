@@ -1,1 +1,1 @@
-export { default } from "@/components/module-latihan/latihan-6/pages/index";
+export { default } from "@/components/module-tugas/tugas6/pages/index";

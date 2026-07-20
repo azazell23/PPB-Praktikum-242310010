@@ -24,6 +24,13 @@ export default function Layout() {
           title: "Premium Catalogues",
         }}
       />
+      <Drawer.Screen
+        name="Profile" // This is the name of the page and must match the url from root
+        options={{
+          drawerLabel: "Profile",
+          title: "Profile",
+        }}
+      />
     </Drawer>
   );
 }
